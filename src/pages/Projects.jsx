@@ -1,3 +1,143 @@
+import { useState } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router";
+import Container from "../components/Container";
+import Reveal from "../components/Reveal";
+import { projects } from "../data/site";
+
+const filters = [
+  "All work",
+  ...new Set(projects.map((project) => project.category)),
+];
+
+function ProjectCard({ project, index }) {
+  return (
+    <Reveal delay={index * 0.06}>
+      <article className="group h-full overflow-hidden rounded-2xl border border-line bg-paper transition-shadow duration-300 hover:shadow-[0_18px_50px_rgba(0,0,0,0.07)]">
+        <div className="relative aspect-[16/10] overflow-hidden bg-canvas">
+          <img
+            src={project.image}
+            alt={`${project.title} campaign placeholder`}
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+          />
+          <span className="absolute left-4 top-4 rounded-full border border-white/40 bg-paper/90 px-3 py-1.5 text-xs font-medium backdrop-blur-sm">
+            {project.category}
+          </span>
+        </div>
+
+        <div className="flex h-full flex-col p-5 sm:p-6">
+          <p className="text-xs font-medium uppercase tracking-[0.1em] text-muted">
+            Selected project · {String(index + 1).padStart(2, "0")}
+          </p>
+          <h2 className="mt-3 text-xl font-semibold leading-snug sm:text-2xl">
+            {project.title}
+          </h2>
+          <div className="mt-5 flex items-end justify-between gap-4 border-t border-line pt-4">
+            <div>
+              <p className="text-xs text-muted">Campaign highlight</p>
+              <p className="mt-1 text-sm font-medium">{project.result}</p>
+            </div>
+            <Link
+              to="/contact"
+              aria-label={`Ask about ${project.title}`}
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line transition-colors hover:bg-ink hover:text-paper"
+            >
+              <ArrowUpRight size={17} />
+            </Link>
+          </div>
+        </div>
+      </article>
+    </Reveal>
+  );
+}
+
 export default function Projects() {
-  return <div className="pt-40 text-center">Projects</div>
+  const [activeFilter, setActiveFilter] = useState("All work");
+  const visibleProjects =
+    activeFilter === "All work"
+      ? projects
+      : projects.filter((project) => project.category === activeFilter);
+
+  return (
+    <div className="pb-20 pt-28 sm:pt-32">
+      <Container>
+        <Reveal>
+          <section className="border-b border-line pb-10 md:pb-14">
+            <p className="text-xs font-medium uppercase tracking-[0.12em] text-accent">
+              The portfolio
+            </p>
+            <div className="mt-4 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+              <div>
+                <h1 className="max-w-3xl text-5xl font-semibold leading-[1.04] sm:text-6xl">
+                  Ideas made to{" "}
+                  <span className="font-serif font-normal italic text-accent">
+                    connect.
+                  </span>
+                </h1>
+                <p className="mt-5 max-w-xl leading-relaxed text-muted">
+                  A collection of campaign concepts and digital marketing work
+                  across social, paid media, and content.
+                </p>
+              </div>
+              <p className="shrink-0 text-sm text-muted">
+                {String(visibleProjects.length).padStart(2, "0")} projects
+              </p>
+            </div>
+          </section>
+        </Reveal>
+
+        <section className="pt-8 md:pt-10" aria-label="Project gallery">
+          <div
+            className="mb-7 flex flex-wrap gap-2"
+            role="group"
+            aria-label="Filter projects"
+          >
+            {filters.map((filter) => (
+              <button
+                key={filter}
+                type="button"
+                aria-pressed={activeFilter === filter}
+                onClick={() => setActiveFilter(filter)}
+                className={`rounded-full border px-4 py-2 text-sm transition-colors ${
+                  activeFilter === filter
+                    ? "border-ink bg-ink text-paper"
+                    : "border-line bg-paper text-muted hover:border-ink hover:text-ink"
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
+
+          <div className="grid items-stretch gap-4 sm:grid-cols-2 lg:gap-5">
+            {visibleProjects.map((project) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={projects.indexOf(project)}
+              />
+            ))}
+          </div>
+        </section>
+
+        <Reveal className="mt-16 flex flex-col items-start justify-between gap-5 border-t border-line pt-10 sm:flex-row sm:items-center">
+          <div>
+            <p className="text-xs font-medium uppercase tracking-[0.12em] text-accent">
+              Have something in mind?
+            </p>
+            <h2 className="mt-2 text-2xl font-semibold">
+              Let’s talk about your project.
+            </h2>
+          </div>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm text-paper transition-colors hover:bg-accent"
+          >
+            Get in touch <ArrowUpRight size={16} />
+          </Link>
+        </Reveal>
+      </Container>
+    </div>
+  );
 }

@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { AtSign, Globe, Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
+import {
+  FaInstagram,
+  FaLinkedinIn,
+  FaTiktok,
+  FaWhatsapp,
+} from "react-icons/fa6";
 import Container from "../components/Container";
 import Reveal from "../components/Reveal";
 
@@ -91,14 +97,30 @@ export default function Contact() {
                     aria-label="Instagram placeholder"
                     className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-paper transition-colors hover:text-accent"
                   >
-                    <AtSign size={17} />
+                    <FaInstagram size={17} />
                   </a>
                   <a
                     href="#linkedin"
                     aria-label="LinkedIn placeholder"
                     className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-paper transition-colors hover:text-accent"
                   >
-                    <Globe size={17} />
+                    <FaLinkedinIn size={17} />
+                  </a>
+                  <a
+                    href="#tiktok"
+                    aria-label="TikTok placeholder"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-paper transition-colors hover:text-accent"
+                  >
+                    <FaTiktok size={17} />
+                  </a>
+                  <a
+                    href="https://wa.me/263770000000"
+                    aria-label="WhatsApp placeholder"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-paper text-[#25D366] transition-colors hover:bg-[#25D366] hover:text-white"
+                  >
+                    <FaWhatsapp size={18} />
                   </a>
                 </div>
               </div>
