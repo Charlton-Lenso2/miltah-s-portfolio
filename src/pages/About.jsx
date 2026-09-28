@@ -21,6 +21,24 @@ const approach = [
   },
 ];
 
+const certificates = [
+  {
+    title: "Digital Marketing Foundations",
+    provider: "Certificate title and provider to be added",
+    image: "https://picsum.photos/seed/miltah-certificate-foundations/900/620",
+  },
+  {
+    title: "Social Media Marketing",
+    provider: "Certificate title and provider to be added",
+    image: "https://picsum.photos/seed/miltah-certificate-social/900/620",
+  },
+  {
+    title: "Analytics and Measurement",
+    provider: "Certificate title and provider to be added",
+    image: "https://picsum.photos/seed/miltah-certificate-analytics/900/620",
+  },
+];
+
 export default function About() {
   return (
     <div className="pb-20 pt-28 sm:pt-32">
@@ -43,9 +61,22 @@ export default function About() {
             </p>
             <p className="mt-4 max-w-xl leading-relaxed text-muted">
               I’m building my experience across social media, content, and
-              digital advertising. I bring curiosity, care, and a willingness to
-              learn to every brief, and I’m interested in the thinking that
-              makes creative work feel useful as well as memorable.
+              digital advertising. I’m especially interested in the balance
+              between creative thinking and thoughtful measurement: shaping a
+              clear message, sharing it in the right places, and paying
+              attention to how people respond.
+            </p>
+            <p className="mt-4 max-w-xl leading-relaxed text-muted">
+              As a junior marketer, I’m strengthening my foundations in audience
+              research, copywriting, content planning, and campaign reporting. I
+              bring care, curiosity, and openness to feedback to each project,
+              and I enjoy turning what I learn into a better next draft.
+            </p>
+            <p className="mt-4 max-w-xl leading-relaxed text-muted">
+              Outside the brief, I’m drawn to the small details that give a
+              brand its character: the words it chooses, the conversations it
+              starts, and the consistency that helps people recognise and trust
+              it.
             </p>
             <Link
               to="/projects"
@@ -98,6 +129,54 @@ export default function About() {
                   <p className="mt-2 text-sm leading-relaxed text-muted">
                     {step.text}
                   </p>
+                </article>
+              ))}
+            </div>
+          </Reveal>
+        </section>
+
+        <section className="mt-20 border-t border-line pt-12 md:mt-28 md:pt-16">
+          <Reveal>
+            <div className="mb-9 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-xs font-medium uppercase tracking-[0.12em] text-accent">
+                  Learning in progress
+                </p>
+                <h2 className="mt-3 text-3xl font-semibold sm:text-4xl">
+                  Certificates &amp; learning
+                </h2>
+              </div>
+              <p className="max-w-md text-sm leading-relaxed text-muted">
+                A place for completed courses and credentials. These images and
+                titles are placeholders until certificates are added.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {certificates.map((certificate, index) => (
+                <article
+                  key={certificate.title}
+                  className="overflow-hidden rounded-2xl border border-line bg-paper"
+                >
+                  <div className="relative aspect-[3/2] overflow-hidden bg-canvas">
+                    <img
+                      src={certificate.image}
+                      alt={`Placeholder certificate image ${index + 1}`}
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                    />
+                    <span className="absolute bottom-3 left-3 rounded-full border border-white/40 bg-paper/90 px-3 py-1.5 text-xs font-medium backdrop-blur-sm">
+                      Image placeholder
+                    </span>
+                  </div>
+                  <div className="p-5">
+                    <h3 className="text-lg font-semibold">
+                      {certificate.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-muted">
+                      {certificate.provider}
+                    </p>
+                  </div>
                 </article>
               ))}
             </div>

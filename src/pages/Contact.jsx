@@ -49,84 +49,23 @@ export default function Contact() {
       <Container>
         <Reveal>
           <section className="grid overflow-hidden rounded-2xl border border-line bg-paper shadow-[0_20px_60px_rgba(0,0,0,0.05)] md:grid-cols-[0.9fr_1.1fr]">
-            <div className="flex flex-col justify-between gap-10 bg-canvas p-6 sm:p-9 md:p-10 lg:p-12">
-              <div>
-                <p className="text-xs font-medium uppercase tracking-[0.12em] text-accent">
-                  Say hello
-                </p>
-                <h1 className="mt-3 text-4xl font-semibold leading-tight sm:text-5xl">
-                  Let’s get in{" "}
-                  <span className="font-serif font-normal italic text-accent">
-                    touch.
-                  </span>
-                </h1>
-                <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted sm:text-base">
-                  Have a project, an opportunity, or an idea you’d like to talk
-                  through? I’d love to hear from you.
-                </p>
-              </div>
-
-              <div className="space-y-6">
-                {contactDetails.map(({ icon: Icon, label, value, href }) => (
-                  <div key={label} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line bg-paper text-accent">
-                      <Icon size={16} />
-                    </span>
-                    <div className="min-w-0">
-                      <p className="text-xs text-muted">{label}</p>
-                      {href ? (
-                        <a
-                          href={href}
-                          className="mt-1 inline-block break-words text-sm font-medium transition-colors hover:text-accent"
-                        >
-                          {value}
-                        </a>
-                      ) : (
-                        <p className="mt-1 text-sm font-medium">{value}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div>
-                <p className="text-xs text-muted">Find me online</p>
-                <div className="mt-3 flex gap-2">
-                  <a
-                    href="#instagram"
-                    aria-label="Instagram placeholder"
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-paper transition-colors hover:text-accent"
-                  >
-                    <FaInstagram size={17} />
-                  </a>
-                  <a
-                    href="#linkedin"
-                    aria-label="LinkedIn placeholder"
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-paper transition-colors hover:text-accent"
-                  >
-                    <FaLinkedinIn size={17} />
-                  </a>
-                  <a
-                    href="#tiktok"
-                    aria-label="TikTok placeholder"
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-paper transition-colors hover:text-accent"
-                  >
-                    <FaTiktok size={17} />
-                  </a>
-                  <a
-                    href="https://wa.me/263770000000"
-                    aria-label="WhatsApp placeholder"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-paper text-[#25D366] transition-colors hover:bg-[#25D366] hover:text-white"
-                  >
-                    <FaWhatsapp size={18} />
-                  </a>
-                </div>
-              </div>
+            <div className="bg-canvas p-6 sm:p-9 md:col-start-1 md:row-start-1 md:p-10 lg:p-12">
+              <p className="text-xs font-medium uppercase tracking-[0.12em] text-accent">
+                Say hello
+              </p>
+              <h1 className="mt-3 text-4xl font-semibold leading-tight sm:text-5xl">
+                Let’s get in{" "}
+                <span className="font-serif font-normal italic text-accent">
+                  touch.
+                </span>
+              </h1>
+              <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted sm:text-base">
+                Have a project, an opportunity, or an idea you’d like to talk
+                through? I’d love to hear from you.
+              </p>
             </div>
 
-            <div className="p-6 sm:p-9 md:p-10 lg:p-12">
+            <div className="p-6 sm:p-9 md:col-start-2 md:row-start-1 md:row-span-3 md:p-10 lg:p-12">
               <form onSubmit={handleSubmit} className="flex h-full flex-col">
                 <div className="grid gap-5 sm:grid-cols-2">
                   <label className="block text-sm font-medium">
@@ -178,9 +117,83 @@ export default function Contact() {
                 </button>
               </form>
             </div>
+
+            <div className="border-t border-line bg-paper px-6 py-5 md:hidden">
+              <p className="text-xs font-medium text-muted">Find me online</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <SocialLinks />
+              </div>
+            </div>
+
+            <div className="space-y-6 bg-canvas p-6 pt-2 sm:p-9 sm:pt-2 md:col-start-1 md:row-start-2 md:p-10 md:pt-3 lg:px-12">
+              {contactDetails.map(({ icon: Icon, label, value, href }) => (
+                <div key={label} className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line bg-paper text-accent">
+                    <Icon size={16} />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-xs text-muted">{label}</p>
+                    {href ? (
+                      <a
+                        href={href}
+                        className="mt-1 inline-block break-words text-sm font-medium transition-colors hover:text-accent"
+                      >
+                        {value}
+                      </a>
+                    ) : (
+                      <p className="mt-1 text-sm font-medium">{value}</p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="hidden bg-canvas px-6 pb-8 pt-5 sm:px-9 md:col-start-1 md:row-start-3 md:block md:px-10 lg:px-12">
+              <p className="text-xs font-medium text-muted">Find me online</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <SocialLinks />
+              </div>
+            </div>
           </section>
         </Reveal>
       </Container>
     </div>
+  );
+}
+
+function SocialLinks() {
+  return (
+    <>
+      <a
+        href="#instagram"
+        aria-label="Instagram placeholder"
+        className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-canvas text-ink transition-colors hover:text-accent"
+      >
+        <FaInstagram size={17} />
+      </a>
+      <a
+        href="#linkedin"
+        aria-label="LinkedIn placeholder"
+        className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-canvas text-ink transition-colors hover:text-accent"
+      >
+        <FaLinkedinIn size={17} />
+      </a>
+      <a
+        href="#tiktok"
+        aria-label="TikTok placeholder"
+        className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-canvas text-ink transition-colors hover:text-accent"
+      >
+        <FaTiktok size={17} />
+      </a>
+      <a
+        href="https://wa.me/263770000000"
+        aria-label="WhatsApp placeholder"
+        target="_blank"
+        rel="noreferrer"
+        className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-canvas text-[#25D366] transition-colors hover:bg-[#25D366] hover:text-white"
+      >
+        <FaWhatsapp size={18} />
+      </a>
+    </>
   );
 }
