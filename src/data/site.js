@@ -1,5 +1,7 @@
 import { Megaphone, PenTool, Target, Mail } from "lucide-react";
 
+export const cvUrl = "/Miltah-Mazvanhi-CV.pdf";
+
 export const brands = [
   "Northwind",
   "Lumen",

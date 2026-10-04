@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
 import Container from "../components/Container";
+import DownloadCVButton from "../components/DownloadCVButton";
 import Reveal from "../components/Reveal";
 
 const approach = [
@@ -78,12 +79,15 @@ export default function About() {
               starts, and the consistency that helps people recognise and trust
               it.
             </p>
-            <Link
-              to="/projects"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm text-paper transition-colors hover:bg-accent"
-            >
-              See selected work <ArrowUpRight size={16} />
-            </Link>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link
+                to="/projects"
+                className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm text-paper transition-colors hover:bg-accent"
+              >
+                See selected work <ArrowUpRight size={16} />
+              </Link>
+              <DownloadCVButton variant="outline" className="px-6 py-3" />
+            </div>
           </Reveal>
 
           <Reveal delay={0.12} className="relative">

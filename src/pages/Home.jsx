@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 
 import Container from "../components/Container";
+import DownloadCVButton from "../components/DownloadCVButton";
 import AboutIntro from "../components/home/AboutIntro";
 import Services from "../components/home/Services";
 import FeaturedProjects from "../components/home/FeaturedProjects";
@@ -61,6 +62,7 @@ function Hero() {
             >
               View projects <ArrowUpRight size={16} />
             </Link>
+            <DownloadCVButton variant="outline" className="px-6 py-3" />
             <Link
               to="/contact"
               className="rounded-full border border-line bg-paper px-6 py-3 text-sm transition-colors hover:border-ink"

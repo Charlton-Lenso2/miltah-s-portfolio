@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Download, Menu, Moon, Sun, X } from "lucide-react";
+import { cvUrl } from "../data/site";
 
 const links = [
   { to: "/", label: "Home" },
@@ -48,6 +49,14 @@ export default function Navbar({ theme, onToggleTheme }) {
             {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
           </button>
 
+          <a
+            href={cvUrl}
+            download="Miltah-Mazvanhi-CV.pdf"
+            className="hidden items-center gap-2 rounded-full border border-line bg-paper px-5 py-2 text-sm transition-colors hover:border-ink md:inline-flex"
+          >
+            <Download size={15} /> CV
+          </a>
+
           <Link
             to="/contact"
             className="hidden rounded-full bg-ink px-5 py-2 text-sm text-paper transition-colors hover:bg-accent md:inline-block"
@@ -91,6 +100,14 @@ export default function Navbar({ theme, onToggleTheme }) {
                 {l.label}
               </NavLink>
             ))}
+            <a
+              href={cvUrl}
+              download="Miltah-Mazvanhi-CV.pdf"
+              onClick={() => setOpen(false)}
+              className="inline-flex items-center gap-2 rounded-2xl px-4 py-3 text-base text-ink"
+            >
+              <Download size={17} /> Download CV
+            </a>
           </motion.nav>
         )}
       </AnimatePresence>

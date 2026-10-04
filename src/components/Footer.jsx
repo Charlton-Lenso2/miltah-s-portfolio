@@ -1,5 +1,7 @@
 import { Link } from 'react-router'
+import { Download } from 'lucide-react'
 import Container from './Container'
+import { cvUrl } from '../data/site'
 
 const nav = [
   { to: '/', label: 'Home' },
@@ -28,12 +30,19 @@ export default function Footer() {
               ))}
             </nav>
 
-            <div className="flex gap-4 text-sm text-muted">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-muted">
               {socials.map((s) => (
                 <a key={s} href="#" className="transition-colors hover:text-ink">
                   {s}
                 </a>
               ))}
+              <a
+                href={cvUrl}
+                download="Miltah-Mazvanhi-CV.pdf"
+                className="inline-flex items-center gap-1.5 rounded-full border border-line px-4 py-2 text-sm text-ink transition-colors hover:border-ink"
+              >
+                <Download size={15} /> Download CV
+              </a>
             </div>
           </div>
 
