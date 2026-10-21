@@ -3,12 +3,12 @@ import { Megaphone, PenTool, Target, Mail } from "lucide-react";
 export const cvUrl = "/Miltah-Mazvanhi-CV.pdf";
 
 export const brands = [
-  "Northwind",
-  "Lumen",
-  "Halcyon",
-  "Bloomly",
-  "Aster & Co",
-  "Vertex",
+  "Coca-Cola",
+  "Foodies Zimbabwe",
+  "The Velvet Fork",
+  "Coursera",
+  "Uxcel",
+  "Zapier",
 ];
 
 export const services = [
@@ -34,47 +34,111 @@ export const services = [
   },
 ];
 
+// Real portfolio work. `cover` is the rendered first page, `pages` are extra
+// rendered spreads shown in the lightbox, `pdf` / `video` open the full file.
 export const projects = [
   {
     id: 1,
-    title: "Bloomly Spring Launch Campaign",
+    title: "Foodies Zimbabwe Launch Campaign",
+    client: "Foodies Zimbabwe",
     category: "Social Media",
-    result: "+240% engagement in 8 weeks",
-    image: "https://picsum.photos/seed/miltah-p1/1600/800",
+    year: "2026",
+    result: "16-page strategy · +40% engagement goal",
+    description:
+      "A full digital marketing campaign strategy for a Harare-based food and restaurant business, built around five objectives: growing online visibility, lifting social engagement by 40% over 90 days, attracting first-time customers, driving restaurant visits and improving retention through community.",
+    tags: ["Campaign strategy", "Social media", "Content planning"],
+    image: "/work/foodies-cover.jpg",
+    pages: ["/work/foodies-p3.jpg", "/work/foodies-p5.jpg"],
+    pdf: "/work/foodies.pdf",
   },
   {
     id: 2,
-    title: "Halcyon Lead Generation Funnel",
-    category: "Paid Ads",
-    result: "4.8x return on ad spend",
-    image: "https://picsum.photos/seed/miltah-p2/1000/800",
+    title: "The Velvet Fork Restaurant Launch",
+    client: "The Velvet Fork",
+    category: "Campaign",
+    year: "2026",
+    result: "400 reservations · 1,000 email subscribers targeted",
+    description:
+      "A pre-launch and grand-opening campaign for a premium restaurant in Harare. Includes a detailed buyer persona, SMART objectives and a channel plan across Instagram, TikTok and Facebook, in-store branding and a giveaway-driven email capture sequence.",
+    tags: ["Go-to-market", "Buyer persona", "Email capture"],
+    image: "/work/velvet-fork-cover.jpg",
+    pages: ["/work/velvet-fork-p3.jpg", "/work/velvet-fork-p4.jpg"],
+    pdf: "/work/velvet-fork.pdf",
   },
   {
     id: 3,
-    title: "Aster & Co Content Rebrand",
-    category: "Content",
-    result: "3x organic reach in one quarter",
-    image: "https://picsum.photos/seed/miltah-p3/1000/800",
+    title: "Coca-Cola Website Performance Audit",
+    client: "Coca-Cola",
+    category: "SEO Audit",
+    year: "2026",
+    result: "88 pages crawled · 27 structured-data issues found",
+    description:
+      "A technical SEO audit of www.coca-colacompany.com using SEMrush Site Audit. The report surfaces 27 structured-data errors, duplicate and missing meta descriptions, duplicated H1 + title tags, and confirms zero 404/5XX errors, with a prioritised fix list.",
+    tags: ["Technical SEO", "SEMrush", "Site audit"],
+    image: "/work/coke-audit-cover.jpg",
+    pages: ["/work/coke-audit-p5.jpg"],
+    pdf: "/work/coke-audit.pdf",
+  },
+  {
+    id: 4,
+    title: "Coca-Cola Brand Voice Guide",
+    client: "Coca-Cola",
+    category: "Branding",
+    year: "2026",
+    result: "One-page voice system + 9:16 brand kit",
+    description:
+      "A one-page brand voice guide defining three voice adjectives — optimistic, friendly and inclusive — with clear do's and don'ts and ready-to-use voice examples, paired with a vertical brand kit motion piece.",
+    tags: ["Brand voice", "Guidelines", "Messaging"],
+    image: "/work/coke-voice-cover.jpg",
+    pages: [],
+    pdf: "/work/coke-voice.pdf",
+    video: "/work/coke-brand-kit.mp4",
+    videoPoster: "/work/coke-voice-cover.jpg",
+  },
+  {
+    id: 5,
+    title: "Zapier Lead Automation",
+    client: "The Velvet Fork",
+    category: "Automation",
+    year: "2026",
+    result: "Google Forms → Sheets → Gmail, fully automated",
+    description:
+      "A no-code lead acquisition workflow for a restaurant. New Google Forms submissions are logged to Google Sheets and trigger an instant personalised welcome email via Gmail, so no booking enquiry slips through a slow inbox.",
+    tags: ["Zapier", "Automation", "Lead capture"],
+    image: "/work/zapier-cover.jpg",
+    pages: ["/work/zapier-p3.jpg"],
+    pdf: "/work/zapier.pdf",
+  },
+  {
+    id: 6,
+    title: "“Together We Care” Charity Event",
+    client: "Community project",
+    category: "Design",
+    year: "2026",
+    result: "Event flyer · live music, food & donation drive",
+    description:
+      "A poster and identity for a community fundraising event at Africa Unity Square, Harare, combining live music and performance, a food and donation drive and youth empowerment activities under a warm, compassion-led message.",
+    tags: ["Graphic design", "Event", "Print"],
+    image: "/work/charity-cover.jpg",
+    pages: [],
+    pdf: "/work/charity.pdf",
   },
 ];
 
-export const testimonials = [
+export const certificates = [
   {
-    quote:
-      "Miltah turned our scattered social presence into a clear strategy. Our engagement has never been higher.",
-    name: "Client Name",
-    role: "Founder, Bloomly",
+    title: "Foundations of Digital Marketing & E-commerce",
+    provider: "Google · Coursera",
+    issued: "July 2026",
+    image: "/work/cert-digital-cover.jpg",
+    pdf: "/work/cert-digital.pdf",
   },
   {
-    quote:
-      "Organised, creative and genuinely obsessed with results. She made the whole process feel effortless.",
-    name: "Client Name",
-    role: "Marketing Lead, Halcyon",
-  },
-  {
-    quote:
-      "Our ad spend finally makes sense. Every campaign came with clear reporting and real growth.",
-    name: "Client Name",
-    role: "Owner, Aster & Co",
+    title: "UX Design Foundations",
+    provider: "Uxcel",
+    issued: "March 2026",
+    image: "/work/cert-ux-cover.jpg",
+    pdf: "/work/cert-ux.pdf",
   },
 ];
+

@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Play } from "lucide-react";
 
 import Container from "../components/Container";
 import DownloadCVButton from "../components/DownloadCVButton";
@@ -9,6 +9,9 @@ import Services from "../components/home/Services";
 import FeaturedProjects from "../components/home/FeaturedProjects";
 import SkillsTools from "../components/home/SkillsTools";
 import CTA from "../components/home/CTA";
+import ProjectLightbox from "../components/ProjectLightbox";
+import { projects } from "../data/site";
+import { useState } from "react";
 
 const ease = [0.22, 1, 0.36, 1];
 const container = {
@@ -21,6 +24,11 @@ const item = {
 };
 
 function Hero() {
+  const [activeProject, setActiveProject] = useState(null);
+  // The brand-kit video project opens inline from the hero.
+  const videoProject = projects.find((p) => p.video);
+  const collage = projects.slice(0, 3);
+
   return (
     <Container className="pt-28 md:pt-32">
       <div className="grid items-center gap-10 rounded-[2rem] border border-line bg-paper p-5 shadow-[0_20px_60px_rgba(0,0,0,0.04)] sm:p-8 md:grid-cols-[1.1fr_0.9fr] md:gap-12 md:rounded-[2.5rem] md:p-12">
@@ -72,22 +80,77 @@ function Hero() {
           </motion.div>
         </motion.div>
 
+        {/* A collage of real, rendered client work instead of a stock portrait. */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.25, ease }}
           className="relative mx-auto w-full max-w-md"
         >
-          <img
-            src="https://picsum.photos/seed/miltah-hero/900/1200"
-            alt="Miltah Mazvanhi"
-            className="aspect-[4/5] w-full rounded-[1.5rem] object-cover object-center md:rounded-[2rem]"
-          />
-          <span className="absolute bottom-4 left-4 rounded-full border border-white/40 bg-paper/90 px-4 py-2 text-xs font-medium text-ink backdrop-blur-sm md:bottom-6 md:left-6">
-            Strategy · Content · Digital
-          </span>
+          <div className="relative aspect-[4/5] w-full">
+            {/* Main featured piece */}
+            <button
+              type="button"
+              onClick={() => setActiveProject(collage[0])}
+              className="group absolute inset-0 overflow-hidden rounded-[1.5rem] md:rounded-[2rem]"
+              aria-label={`Open ${collage[0].title}`}
+            >
+              <img
+                src={collage[0].image}
+                alt={collage[0].title}
+                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              />
+              <span className="absolute left-4 top-4 rounded-full border border-white/40 bg-paper/90 px-4 py-2 text-xs font-medium text-ink backdrop-blur-sm md:left-6 md:top-6">
+                {collage[0].client}
+              </span>
+            </button>
+
+            {/* Stacked secondary pieces */}
+            <button
+              type="button"
+              onClick={() => setActiveProject(collage[1])}
+              aria-label={`Open ${collage[1].title}`}
+              className="absolute -left-4 top-8 hidden w-24 -rotate-6 overflow-hidden rounded-xl border-2 border-paper shadow-xl transition-transform duration-300 hover:scale-105 sm:block"
+            >
+              <img
+                src={collage[1].image}
+                alt={collage[1].title}
+                className="h-32 w-full object-cover"
+              />
+            </button>
+
+            {videoProject && (
+              <button
+                type="button"
+                onClick={() => setActiveProject(videoProject)}
+                aria-label={`Play ${videoProject.title}`}
+                className="absolute -right-4 bottom-16 w-24 rotate-6 overflow-hidden rounded-xl border-2 border-paper shadow-xl transition-transform duration-300 hover:scale-105 sm:w-28"
+              >
+                <video
+                  src={videoProject.video}
+                  muted
+                  loop
+                  autoPlay
+                  playsInline
+                  className="h-36 w-full object-cover"
+                />
+                <span className="absolute inset-0 flex items-center justify-center bg-ink/20">
+                  <Play size={20} className="text-white" fill="white" />
+                </span>
+              </button>
+            )}
+
+            <span className="absolute bottom-4 left-4 rounded-full border border-white/40 bg-paper/90 px-4 py-2 text-xs font-medium text-ink backdrop-blur-sm md:bottom-6 md:left-6">
+              Strategy · Content · Digital
+            </span>
+          </div>
         </motion.div>
       </div>
+
+      <ProjectLightbox
+        project={activeProject}
+        onClose={() => setActiveProject(null)}
+      />
     </Container>
   );
 }

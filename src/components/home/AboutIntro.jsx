@@ -36,12 +36,17 @@ export default function AboutIntro() {
               More about me <ArrowUpRight size={16} />
             </Link>
           </div>
-          <img
-            src="https://picsum.photos/seed/miltah-about/1000/1200"
-            alt="Placeholder portrait for Miltah"
-            loading="lazy"
-            className="aspect-[4/3] w-full rounded-2xl object-cover sm:aspect-[16/10] md:aspect-[4/5]"
-          />
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-canvas sm:aspect-[16/10] md:aspect-[4/5]">
+            <img
+              src="/work/coke-audit-cover.jpg"
+              alt="Coca-Cola website performance audit cover"
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
+            <span className="absolute bottom-4 left-4 rounded-full border border-white/40 bg-paper/90 px-4 py-2 text-xs font-medium text-ink backdrop-blur-sm">
+              Coca-Cola · Website audit
+            </span>
+          </div>
         </Reveal>
       </Container>
     </section>

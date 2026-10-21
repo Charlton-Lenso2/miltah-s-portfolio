@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import Container from "../components/Container";
 import DownloadCVButton from "../components/DownloadCVButton";
 import Reveal from "../components/Reveal";
+import { certificates } from "../data/site";
 
 const approach = [
   {
@@ -19,24 +20,6 @@ const approach = [
     number: "03",
     title: "Learn as I go",
     text: "Pay attention to what resonates, then use that knowledge in the next iteration.",
-  },
-];
-
-const certificates = [
-  {
-    title: "Digital Marketing Foundations",
-    provider: "Certificate title and provider to be added",
-    image: "https://picsum.photos/seed/miltah-certificate-foundations/900/620",
-  },
-  {
-    title: "Social Media Marketing",
-    provider: "Certificate title and provider to be added",
-    image: "https://picsum.photos/seed/miltah-certificate-social/900/620",
-  },
-  {
-    title: "Analytics and Measurement",
-    provider: "Certificate title and provider to be added",
-    image: "https://picsum.photos/seed/miltah-certificate-analytics/900/620",
   },
 ];
 
@@ -91,11 +74,20 @@ export default function About() {
           </Reveal>
 
           <Reveal delay={0.12} className="relative">
-            <img
-              src="https://picsum.photos/seed/miltah-about-page/1000/1200"
-              alt="Placeholder portrait of Miltah"
-              className="aspect-[4/5] w-full rounded-2xl object-cover"
-            />
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-canvas">
+              <img
+                src="/work/velvet-fork-cover.jpg"
+                alt="The Velvet Fork launch campaign cover"
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+              <img
+                src="/work/foodies-cover.jpg"
+                alt="Foodies Zimbabwe campaign cover"
+                loading="lazy"
+                className="absolute -bottom-6 -right-4 hidden w-40 rotate-6 rounded-xl border-4 border-paper object-cover shadow-xl sm:block md:w-48"
+              />
+            </div>
             <div className="absolute bottom-4 left-4 rounded-xl border border-white/30 bg-paper/90 px-4 py-3 backdrop-blur-sm sm:bottom-6 sm:left-6">
               <p className="text-xs text-muted">Based in</p>
               <p className="mt-0.5 text-sm font-medium">Harare, Zimbabwe</p>
@@ -151,35 +143,43 @@ export default function About() {
                 </h2>
               </div>
               <p className="max-w-md text-sm leading-relaxed text-muted">
-                A place for completed courses and credentials. These images and
-                titles are placeholders until certificates are added.
+                Credentials I’ve earned so far — and I’m always adding to them.
               </p>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {certificates.map((certificate, index) => (
+            <div className="grid gap-4 sm:grid-cols-2">
+              {certificates.map((certificate) => (
                 <article
                   key={certificate.title}
-                  className="overflow-hidden rounded-2xl border border-line bg-paper"
+                  className="group overflow-hidden rounded-2xl border border-line bg-paper"
                 >
                   <div className="relative aspect-[3/2] overflow-hidden bg-canvas">
                     <img
                       src={certificate.image}
-                      alt={`Placeholder certificate image ${index + 1}`}
+                      alt={`${certificate.title} certificate`}
                       loading="lazy"
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                     />
-                    <span className="absolute bottom-3 left-3 rounded-full border border-white/40 bg-paper/90 px-3 py-1.5 text-xs font-medium backdrop-blur-sm">
-                      Image placeholder
-                    </span>
                   </div>
-                  <div className="p-5">
-                    <h3 className="text-lg font-semibold">
-                      {certificate.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted">
-                      {certificate.provider}
-                    </p>
+                  <div className="flex items-center justify-between gap-4 p-5">
+                    <div>
+                      <h3 className="text-lg font-semibold">
+                        {certificate.title}
+                      </h3>
+                      <p className="mt-1.5 text-sm text-muted">
+                        {certificate.provider} · {certificate.issued}
+                      </p>
+                    </div>
+                    {certificate.pdf && (
+                      <a
+                        href={certificate.pdf}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex shrink-0 items-center gap-2 rounded-full border border-line px-4 py-2 text-sm transition-colors hover:border-ink"
+                      >
+                        View <ArrowUpRight size={15} />
+                      </a>
+                    )}
                   </div>
                 </article>
               ))}

@@ -1,19 +1,21 @@
+import { useState } from 'react'
 import { Link } from 'react-router'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Film } from 'lucide-react'
 import Container from '../Container'
 import Reveal from '../Reveal'
 import SectionHeading from '../SectionHeading'
+import ProjectLightbox from '../ProjectLightbox'
 import { projects } from '../../data/site'
 
-function ProjectCard({ project, featured }) {
+function ProjectCard({ project, featured, onOpen }) {
   return (
     <Reveal className={featured ? 'md:col-span-2' : ''}>
-      <Link
-        to="/projects"
-        className="group block rounded-[2rem] border border-line bg-paper p-3 transition-shadow duration-300 hover:shadow-[0_20px_60px_rgba(0,0,0,0.06)]"
+      <div
+        onClick={() => onOpen(project)}
+        className="group block cursor-pointer rounded-[2rem] border border-line bg-paper p-3 transition-shadow duration-300 hover:shadow-[0_20px_60px_rgba(0,0,0,0.06)]"
       >
         <div
-          className={`overflow-hidden rounded-[1.5rem] ${
+          className={`relative overflow-hidden rounded-[1.5rem] ${
             featured ? 'aspect-[16/8]' : 'aspect-[4/3]'
           }`}
         >
@@ -22,6 +24,11 @@ function ProjectCard({ project, featured }) {
             alt={project.title}
             className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
+          {project.video && (
+            <span className="absolute right-4 top-4 flex items-center gap-1.5 rounded-full bg-ink/80 px-3 py-1.5 text-xs font-medium text-paper backdrop-blur-sm">
+              <Film size={13} /> Video
+            </span>
+          )}
         </div>
 
         <div className="flex items-end justify-between gap-4 px-3 pb-3 pt-5">
@@ -38,12 +45,15 @@ function ProjectCard({ project, featured }) {
             <ArrowUpRight size={18} />
           </span>
         </div>
-      </Link>
+      </div>
     </Reveal>
   )
 }
 
 export default function FeaturedProjects() {
+  const [activeProject, setActiveProject] = useState(null)
+  const featured = projects.slice(0, 3)
+
   return (
     <section className="py-20 md:py-28">
       <Container>
@@ -53,8 +63,13 @@ export default function FeaturedProjects() {
         </SectionHeading>
 
         <div className="grid gap-3 md:grid-cols-2">
-          {projects.map((p, i) => (
-            <ProjectCard key={p.id} project={p} featured={i === 0} />
+          {featured.map((p, i) => (
+            <ProjectCard
+              key={p.id}
+              project={p}
+              featured={i === 0}
+              onOpen={setActiveProject}
+            />
           ))}
         </div>
 
@@ -67,6 +82,11 @@ export default function FeaturedProjects() {
           </Link>
         </Reveal>
       </Container>
+
+      <ProjectLightbox
+        project={activeProject}
+        onClose={() => setActiveProject(null)}
+      />
     </section>
   )
 }
