@@ -59,8 +59,9 @@ function Hero() {
             variants={item}
             className="mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
           >
-            I'm Miltah, an early-career digital marketer building thoughtful
-            campaigns across social media, content and digital advertising.
+            I&apos;m Miltah, a junior digital marketer based in Harare, building
+            campaigns across social media, content, branding and digital
+            advertising.
           </motion.p>
 
           <motion.div variants={item} className="mt-8 flex flex-wrap gap-3">

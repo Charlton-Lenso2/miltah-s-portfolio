@@ -1,28 +1,23 @@
 import { useState } from "react";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
-import {
-  FaInstagram,
-  FaLinkedinIn,
-  FaTiktok,
-  FaWhatsapp,
-} from "react-icons/fa6";
 import Container from "../components/Container";
 import Reveal from "../components/Reveal";
+import { contact, profiles } from "../data/site";
 
 const contactDetails = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@miltah.com",
-    href: "mailto:hello@miltah.com",
+    value: contact.email,
+    href: `mailto:${contact.email}`,
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+263 77 000 0000",
-    href: "tel:+263770000000",
+    value: contact.phone,
+    href: contact.phoneHref,
   },
-  { icon: MapPin, label: "Location", value: "Harare, Zimbabwe" },
+  { icon: MapPin, label: "Location", value: contact.location },
 ];
 
 export default function Contact() {
@@ -34,7 +29,7 @@ export default function Contact() {
     const body = encodeURIComponent(
       `${form.message}\n\nFrom: ${form.name}\nEmail: ${form.email}`,
     );
-    window.location.href = `mailto:hello@miltah.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`;
   }
 
   function handleChange(event) {
@@ -136,7 +131,7 @@ export default function Contact() {
                     {href ? (
                       <a
                         href={href}
-                        className="mt-1 inline-block break-words text-sm font-medium transition-colors hover:text-accent"
+                        className="mt-1 inline-flex min-h-8 items-center break-words text-sm font-medium transition-colors hover:text-accent"
                       >
                         {value}
                       </a>
@@ -164,36 +159,27 @@ export default function Contact() {
 function SocialLinks() {
   return (
     <>
-      <a
-        href="#instagram"
-        aria-label="Instagram placeholder"
-        className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-canvas text-ink transition-colors hover:text-accent"
-      >
-        <FaInstagram size={17} />
-      </a>
-      <a
-        href="#linkedin"
-        aria-label="LinkedIn placeholder"
-        className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-canvas text-ink transition-colors hover:text-accent"
-      >
-        <FaLinkedinIn size={17} />
-      </a>
-      <a
-        href="#tiktok"
-        aria-label="TikTok placeholder"
-        className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-canvas text-ink transition-colors hover:text-accent"
-      >
-        <FaTiktok size={17} />
-      </a>
-      <a
-        href="https://wa.me/263770000000"
-        aria-label="WhatsApp placeholder"
-        target="_blank"
-        rel="noreferrer"
-        className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-canvas text-[#25D366] transition-colors hover:bg-[#25D366] hover:text-white"
-      >
-        <FaWhatsapp size={18} />
-      </a>
+      {profiles.map((social) => {
+        const Icon = social.icon;
+        const isWhatsApp = social.label === "WhatsApp";
+        return (
+          <a
+            key={social.label}
+            href={social.href}
+            aria-label={social.label}
+            title={social.label}
+            target={social.external ? "_blank" : undefined}
+            rel={social.external ? "noreferrer" : undefined}
+            className={`flex h-10 w-10 items-center justify-center rounded-full border border-line bg-canvas transition-colors ${
+              isWhatsApp
+                ? "text-[#25D366] hover:bg-[#25D366] hover:text-white"
+                : "text-ink hover:text-accent"
+            }`}
+          >
+            <Icon size={isWhatsApp ? 18 : 17} />
+          </a>
+        );
+      })}
     </>
   );
 }

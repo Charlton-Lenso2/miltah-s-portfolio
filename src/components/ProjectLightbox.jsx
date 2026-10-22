@@ -121,6 +121,28 @@ export default function ProjectLightbox({ project, onClose }) {
                 </div>
               )}
 
+              {project.video && (
+                <div className="mt-6">
+                  <p className="text-xs font-medium uppercase tracking-[0.12em] text-muted">
+                    Brand kit in motion
+                  </p>
+                  <video
+                    src={project.video}
+                    poster={project.videoPoster}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    className="mt-3 w-full rounded-xl border border-line bg-canvas"
+                  >
+                    Your browser does not support embedded video.{" "}
+                    <a href={project.video} target="_blank" rel="noreferrer">
+                      Download the video
+                    </a>
+                    .
+                  </video>
+                </div>
+              )}
+
               <div className="mt-7 flex flex-wrap items-center gap-3 border-t border-line pt-6">
                 {project.pdf && (
                   <a
@@ -139,7 +161,7 @@ export default function ProjectLightbox({ project, onClose }) {
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-3 text-sm transition-colors hover:border-ink"
                   >
-                    <Film size={16} /> Watch video
+                    <Film size={16} /> Open video
                   </a>
                 )}
                 <button

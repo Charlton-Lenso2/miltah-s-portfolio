@@ -1,6 +1,7 @@
 import { Mail } from "lucide-react";
 import Container from "../Container";
 import Reveal from "../Reveal";
+import { contact } from "../../data/site";
 
 export default function CTA() {
   return (
@@ -20,13 +21,13 @@ export default function CTA() {
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <a
-                href="mailto:hello@miltah.com"
+                href={`mailto:${contact.email}`}
                 className="inline-flex items-center gap-2 rounded-full bg-paper px-6 py-3 text-sm text-ink transition-colors hover:bg-accent hover:text-paper"
               >
                 <Mail size={16} /> Email me
               </a>
               <a
-                href="https://wa.me/+263772222222"
+                href={contact.whatsapp}
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-full border border-paper/20 px-6 py-3 text-sm transition-colors hover:border-paper"

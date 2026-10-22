@@ -2,20 +2,26 @@ import Container from "../Container";
 import Reveal from "../Reveal";
 
 const skills = [
-  "Social media planning",
-  "Content creation",
+  "Social media marketing",
+  "Content creation & strategy",
   "Copywriting",
-  "Campaign research",
-  "Audience insights",
-  "Performance reporting",
+  "Campaign planning",
+  "Audience & market research",
+  "Customer journey mapping",
+  "SEO & keyword research",
+  "Email marketing",
+  "Branding & visual design",
 ];
 
 const tools = [
   "Canva",
+  "Figma",
   "Meta Business Suite",
-  "Google Analytics 4",
   "Google Ads",
+  "Google Analytics",
   "Mailchimp",
+  "Zapier",
+  "Google Sheets",
 ];
 
 function ListColumn({ title, items }) {

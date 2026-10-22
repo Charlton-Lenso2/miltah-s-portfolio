@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
 import { Download } from 'lucide-react'
 import Container from './Container'
-import { cvUrl } from '../data/site'
+import { cvUrl, socials } from '../data/site'
 
 const nav = [
   { to: '/', label: 'Home' },
@@ -9,8 +9,6 @@ const nav = [
   { to: '/projects', label: 'Projects' },
   { to: '/contact', label: 'Contact' },
 ]
-
-const socials = ['LinkedIn', 'Instagram', 'TikTok']
 
 export default function Footer() {
   return (
@@ -22,20 +20,33 @@ export default function Footer() {
               Miltah<span className="text-accent">.</span>
             </Link>
 
-            <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
+            <nav className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-muted">
               {nav.map((n) => (
-                <Link key={n.to} to={n.to} className="transition-colors hover:text-ink">
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  className="inline-flex min-h-8 items-center transition-colors hover:text-ink"
+                >
                   {n.label}
                 </Link>
               ))}
             </nav>
 
-            <div className="flex flex-wrap items-center gap-4 text-sm text-muted">
-              {socials.map((s) => (
-                <a key={s} href="#" className="transition-colors hover:text-ink">
-                  {s}
-                </a>
-              ))}
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted">
+              {socials.map((s) => {
+                const Icon = s.icon;
+                return (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target={s.external ? "_blank" : undefined}
+                    rel={s.external ? "noreferrer" : undefined}
+                    className="inline-flex min-h-8 items-center gap-1.5 transition-colors hover:text-ink"
+                  >
+                    <Icon size={15} /> {s.label}
+                  </a>
+                );
+              })}
               <a
                 href={cvUrl}
                 download="Miltah-Mazvanhi-CV.pdf"

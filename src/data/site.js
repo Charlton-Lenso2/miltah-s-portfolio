@@ -1,15 +1,51 @@
 import { Megaphone, PenTool, Target, Mail } from "lucide-react";
+import { FaLinkedinIn, FaWhatsapp } from "react-icons/fa6";
 
 export const cvUrl = "/Miltah-Mazvanhi-CV.pdf";
 
-export const brands = [
-  "Coca-Cola",
-  "Foodies Zimbabwe",
-  "The Velvet Fork",
-  "Coursera",
-  "Uxcel",
-  "Zapier",
+/**
+ * Real contact details, taken from the CV in `public/Miltah-Mazvanhi-CV.pdf`.
+ * Only channels that actually exist are listed — no placeholder handles.
+ */
+export const contact = {
+  email: "miltahmazvanhi@gmail.com",
+  phone: "+263 786 826 703",
+  phoneHref: "tel:+263786826703",
+  whatsapp: "https://wa.me/263786826703",
+  location: "Harare, Zimbabwe",
+  linkedin: "https://linkedin.com/in/miltah-mazvanhi-381b1527b",
+};
+
+/**
+ * Contact channels that are genuinely live. Instagram and TikTok are
+ * intentionally absent — no verified accounts exist, so no links are shown.
+ */
+export const socials = [
+  {
+    label: "LinkedIn",
+    href: contact.linkedin,
+    icon: FaLinkedinIn,
+    external: true,
+    isProfile: true,
+  },
+  {
+    label: "WhatsApp",
+    href: contact.whatsapp,
+    icon: FaWhatsapp,
+    external: true,
+    isProfile: true,
+  },
+  {
+    label: "Email",
+    href: `mailto:${contact.email}`,
+    icon: Mail,
+    external: false,
+    isProfile: false,
+  },
 ];
+
+/** Social profiles only — used where a dedicated email row already exists. */
+export const profiles = socials.filter((s) => s.isProfile);
 
 export const services = [
   {
@@ -36,6 +72,8 @@ export const services = [
 
 // Real portfolio work. `cover` is the rendered first page, `pages` are extra
 // rendered spreads shown in the lightbox, `pdf` / `video` open the full file.
+// `result` states what the deliverable actually produced. Figures that were
+// campaign targets (not measured outcomes) are labelled as such.
 export const projects = [
   {
     id: 1,
@@ -43,7 +81,7 @@ export const projects = [
     client: "Foodies Zimbabwe",
     category: "Social Media",
     year: "2026",
-    result: "16-page strategy · +40% engagement goal",
+    result: "16-page strategy · 5 campaign objectives",
     description:
       "A full digital marketing campaign strategy for a Harare-based food and restaurant business, built around five objectives: growing online visibility, lifting social engagement by 40% over 90 days, attracting first-time customers, driving restaurant visits and improving retention through community.",
     tags: ["Campaign strategy", "Social media", "Content planning"],
@@ -57,7 +95,7 @@ export const projects = [
     client: "The Velvet Fork",
     category: "Campaign",
     year: "2026",
-    result: "400 reservations · 1,000 email subscribers targeted",
+    result: "Pre-launch campaign · 400 reservations targeted",
     description:
       "A pre-launch and grand-opening campaign for a premium restaurant in Harare. Includes a detailed buyer persona, SMART objectives and a channel plan across Instagram, TikTok and Facebook, in-store branding and a giveaway-driven email capture sequence.",
     tags: ["Go-to-market", "Buyer persona", "Email capture"],
@@ -125,6 +163,11 @@ export const projects = [
   },
 ];
 
+/**
+ * Certifications earned. The first two have a scanned certificate on file and
+ * link to the original document; the rest are listed from the CV, where no
+ * scan is available to publish.
+ */
 export const certificates = [
   {
     title: "Foundations of Digital Marketing & E-commerce",
@@ -132,6 +175,7 @@ export const certificates = [
     issued: "July 2026",
     image: "/work/cert-digital-cover.jpg",
     pdf: "/work/cert-digital.pdf",
+    verify: "https://coursera.org/verify/1ZJYSKSOQOQ3",
   },
   {
     title: "UX Design Foundations",
@@ -139,6 +183,54 @@ export const certificates = [
     issued: "March 2026",
     image: "/work/cert-ux-cover.jpg",
     pdf: "/work/cert-ux.pdf",
+  },
+  {
+    title: "Social Media Marketing",
+    provider: "Coursera",
+    issued: "2026",
+  },
+  {
+    title: "Fundamentals of Digital Marketing",
+    provider: "Google Skillshop",
+    issued: "2026",
+  },
+  {
+    title: "Fundamentals of Python",
+    provider: "Alison",
+    issued: "2026",
+  },
+  {
+    title: "Product Design",
+    provider: "Uxcel",
+    issued: "2026",
+  },
+];
+
+/** Work history, from the CV. */
+export const experience = [
+  {
+    role: "Digital Marketing Student",
+    org: "Uncommon.org",
+    location: "Harare, Zimbabwe",
+    period: "January 2026 – Present",
+    points: [
+      "Create social media content, marketing visuals and promotional materials in Canva.",
+      "Develop content strategies, captions and campaign concepts for marketing projects.",
+      "Conduct audience research, build buyer personas and map customer journeys.",
+      "Plan multi-channel campaigns across social media, email and promotional content.",
+      "Developed The Velvet Fork restaurant campaign covering content, concepts and audience strategy.",
+    ],
+  },
+  {
+    role: "Youth Coding Instructor (Volunteer)",
+    org: "Uncommon.org",
+    location: "Harare, Zimbabwe",
+    period: "2026",
+    points: [
+      "Teach primary and high school students to code games using Scratch 3 and Woof JS.",
+      "Facilitate hands-on sessions at local schools where learners build and test their own games.",
+      "Explain coding concepts in an accessible way, adapting lessons to different ages and skill levels.",
+    ],
   },
 ];
 

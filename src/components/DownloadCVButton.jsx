@@ -1,4 +1,5 @@
 import { Download } from "lucide-react";
+import { cvUrl } from "../data/site";
 
 export default function DownloadCVButton({ variant = "primary", className = "" }) {
   const styles =
@@ -14,7 +15,7 @@ export default function DownloadCVButton({ variant = "primary", className = "" }
 
   return (
     <a
-      href="/Miltah-Mazvanhi-CV.pdf"
+      href={cvUrl}
       download="Miltah-Mazvanhi-CV.pdf"
       className={`inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium ${styles} ${className}`.trim()}
     >

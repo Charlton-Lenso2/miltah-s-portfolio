@@ -1,9 +1,9 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, BadgeCheck } from "lucide-react";
 import { Link } from "react-router";
 import Container from "../components/Container";
 import DownloadCVButton from "../components/DownloadCVButton";
 import Reveal from "../components/Reveal";
-import { certificates } from "../data/site";
+import { certificates, experience } from "../data/site";
 
 const approach = [
   {
@@ -136,6 +136,62 @@ export default function About() {
             <div className="mb-9 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="text-xs font-medium uppercase tracking-[0.12em] text-accent">
+                  Where I&apos;ve worked
+                </p>
+                <h2 className="mt-3 text-3xl font-semibold sm:text-4xl">
+                  Experience
+                </h2>
+              </div>
+              <p className="max-w-md text-sm leading-relaxed text-muted">
+                Hands-on marketing work and volunteer teaching, both centred
+                on helping people understand and build things themselves.
+              </p>
+            </div>
+
+            <div className="space-y-5">
+              {experience.map((role) => (
+                <article
+                  key={role.role}
+                  className="rounded-2xl border border-line bg-paper p-6 sm:p-8"
+                >
+                  <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
+                    <div>
+                      <h3 className="text-xl font-semibold sm:text-2xl">
+                        {role.role}
+                      </h3>
+                      <p className="mt-1 text-sm text-muted">
+                        {role.org} · {role.location}
+                      </p>
+                    </div>
+                    <p className="shrink-0 rounded-full border border-line bg-canvas px-3 py-1.5 text-xs font-medium text-muted">
+                      {role.period}
+                    </p>
+                  </div>
+                  <ul className="mt-5 space-y-2.5">
+                    {role.points.map((point) => (
+                      <li
+                        key={point}
+                        className="flex gap-3 text-sm leading-relaxed text-muted"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent"
+                        />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </Reveal>
+        </section>
+
+        <section className="mt-20 border-t border-line pt-12 md:mt-28 md:pt-16">
+          <Reveal>
+            <div className="mb-9 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-xs font-medium uppercase tracking-[0.12em] text-accent">
                   Learning in progress
                 </p>
                 <h2 className="mt-3 text-3xl font-semibold sm:text-4xl">
@@ -143,7 +199,8 @@ export default function About() {
                 </h2>
               </div>
               <p className="max-w-md text-sm leading-relaxed text-muted">
-                Credentials I’ve earned so far — and I’m always adding to them.
+                Credentials I&apos;ve earned so far — and I&apos;m always adding
+                to them.
               </p>
             </div>
 
@@ -154,12 +211,28 @@ export default function About() {
                   className="group overflow-hidden rounded-2xl border border-line bg-paper"
                 >
                   <div className="relative aspect-[3/2] overflow-hidden bg-canvas">
-                    <img
-                      src={certificate.image}
-                      alt={`${certificate.title} certificate`}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                    />
+                    {certificate.image ? (
+                      <img
+                        src={certificate.image}
+                        alt={`${certificate.title} certificate`}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-6 text-center">
+                        <BadgeCheck
+                          size={28}
+                          className="text-accent"
+                          aria-hidden="true"
+                        />
+                        <p className="text-sm font-medium text-ink">
+                          {certificate.title}
+                        </p>
+                        <p className="text-xs text-muted">
+                          {certificate.provider}
+                        </p>
+                      </div>
+                    )}
                   </div>
                   <div className="flex items-center justify-between gap-4 p-5">
                     <div>
@@ -170,16 +243,28 @@ export default function About() {
                         {certificate.provider} · {certificate.issued}
                       </p>
                     </div>
-                    {certificate.pdf && (
-                      <a
-                        href={certificate.pdf}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex shrink-0 items-center gap-2 rounded-full border border-line px-4 py-2 text-sm transition-colors hover:border-ink"
-                      >
-                        View <ArrowUpRight size={15} />
-                      </a>
-                    )}
+                    <div className="flex shrink-0 flex-col items-end gap-2">
+                      {certificate.pdf && (
+                        <a
+                          href={certificate.pdf}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-sm transition-colors hover:border-ink"
+                        >
+                          View <ArrowUpRight size={15} />
+                        </a>
+                      )}
+                      {certificate.verify && (
+                        <a
+                          href={certificate.verify}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex min-h-8 items-center gap-1.5 text-xs text-muted underline-offset-4 transition-colors hover:text-ink hover:underline"
+                        >
+                          <BadgeCheck size={14} /> Verify credential
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </article>
               ))}
