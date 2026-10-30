@@ -39,25 +39,25 @@ export default function About() {
               </span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-              I’m Miltah, a junior digital marketer based in Harare, Zimbabwe.
-              I’m drawn to the meeting point between people, good stories, and
+              I'm Miltah, a junior digital marketer based in Harare, Zimbabwe.
+              I'm drawn to the meeting point between people, good stories, and
               the digital spaces where ideas travel.
             </p>
             <p className="mt-4 max-w-xl leading-relaxed text-muted">
-              I’m building my experience across social media, content, and
-              digital advertising. I’m especially interested in the balance
+              I'm building my experience across social media, content, and
+              digital advertising. I'm especially interested in the balance
               between creative thinking and thoughtful measurement: shaping a
               clear message, sharing it in the right places, and paying
               attention to how people respond.
             </p>
             <p className="mt-4 max-w-xl leading-relaxed text-muted">
-              As a junior marketer, I’m strengthening my foundations in audience
+              As a junior marketer, I'm strengthening my foundations in audience
               research, copywriting, content planning, and campaign reporting. I
               bring care, curiosity, and openness to feedback to each project,
               and I enjoy turning what I learn into a better next draft.
             </p>
             <p className="mt-4 max-w-xl leading-relaxed text-muted">
-              Outside the brief, I’m drawn to the small details that give a
+              Outside the brief, I'm drawn to the small details that give a
               brand its character: the words it chooses, the conversations it
               starts, and the consistency that helps people recognise and trust
               it.
@@ -74,18 +74,12 @@ export default function About() {
           </Reveal>
 
           <Reveal delay={0.12} className="relative">
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-canvas">
+            <div className="relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-canvas">
               <img
-                src="/work/velvet-fork-cover.jpg"
-                alt="The Velvet Fork launch campaign cover"
+                src="/assets/miltah-photo.jpeg"
+                alt="Miltah, junior digital marketer"
                 loading="lazy"
                 className="h-full w-full object-cover"
-              />
-              <img
-                src="/work/foodies-cover.jpg"
-                alt="Foodies Zimbabwe campaign cover"
-                loading="lazy"
-                className="absolute -bottom-6 -right-4 hidden w-40 rotate-6 rounded-xl border-4 border-paper object-cover shadow-xl sm:block md:w-48"
               />
             </div>
             <div className="absolute bottom-4 left-4 rounded-xl border border-white/30 bg-paper/90 px-4 py-3 backdrop-blur-sm sm:bottom-6 sm:left-6">
@@ -210,7 +204,7 @@ export default function About() {
                   key={certificate.title}
                   className="group overflow-hidden rounded-2xl border border-line bg-paper"
                 >
-                  <div className="relative aspect-[3/2] overflow-hidden bg-canvas">
+                  <div className="relative aspect-3/2 overflow-hidden bg-canvas">
                     {certificate.image ? (
                       <img
                         src={certificate.image}

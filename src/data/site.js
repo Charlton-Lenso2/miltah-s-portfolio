@@ -7,13 +7,15 @@ export const cvUrl = "/Miltah-Mazvanhi-CV.pdf";
  * Real contact details, taken from the CV in `public/Miltah-Mazvanhi-CV.pdf`.
  * Only channels that actually exist are listed — no placeholder handles.
  */
+export const linkedin = "https://www.linkedin.com/in/miltah-mazvanhi-381b1527b";
+
 export const contact = {
   email: "miltahmazvanhi@gmail.com",
   phone: "+263 786 826 703",
   phoneHref: "tel:+263786826703",
   whatsapp: "https://wa.me/263786826703",
   location: "Harare, Zimbabwe",
-  linkedin: "https://linkedin.com/in/miltah-mazvanhi-381b1527b",
+  linkedin: "https://www.linkedin.com/in/miltah-mazvanhi-381b1527b",
 };
 
 /**

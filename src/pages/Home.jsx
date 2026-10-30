@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { linkedin } from "../data/site";
 import { motion } from "motion/react";
 import { ArrowUpRight, Play } from "lucide-react";
 
@@ -31,7 +32,7 @@ function Hero() {
 
   return (
     <Container className="pt-28 md:pt-32">
-      <div className="grid items-center gap-10 rounded-[2rem] border border-line bg-paper p-5 shadow-[0_20px_60px_rgba(0,0,0,0.04)] sm:p-8 md:grid-cols-[1.1fr_0.9fr] md:gap-12 md:rounded-[2.5rem] md:p-12">
+      <div className="grid items-center gap-10 rounded-4xl border border-line bg-paper p-5 shadow-[0_20px_60px_rgba(0,0,0,0.04)] sm:p-8 md:grid-cols-[1.1fr_0.9fr] md:gap-12 md:rounded-[2.5rem] md:p-12">
         <motion.div
           variants={container}
           initial="hidden"
@@ -78,71 +79,32 @@ function Hero() {
             >
               Get in touch
             </Link>
+            <a
+              href={linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-6 py-3 text-sm font-medium transition-colors hover:border-ink hover:text-ink"
+            >
+              LinkedIn
+            </a>
           </motion.div>
         </motion.div>
 
-        {/* A collage of real, rendered client work instead of a stock portrait. */}
+        {/* The owner's portrait, as the hero visual. */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.25, ease }}
           className="relative mx-auto w-full max-w-md"
         >
-          <div className="relative aspect-[4/5] w-full">
-            {/* Main featured piece */}
-            <button
-              type="button"
-              onClick={() => setActiveProject(collage[0])}
-              className="group absolute inset-0 overflow-hidden rounded-[1.5rem] md:rounded-[2rem]"
-              aria-label={`Open ${collage[0].title}`}
-            >
-              <img
-                src={collage[0].image}
-                alt={collage[0].title}
-                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              />
-              <span className="absolute left-4 top-4 rounded-full border border-white/40 bg-paper/90 px-4 py-2 text-xs font-medium text-ink backdrop-blur-sm md:left-6 md:top-6">
-                {collage[0].client}
-              </span>
-            </button>
-
-            {/* Stacked secondary pieces */}
-            <button
-              type="button"
-              onClick={() => setActiveProject(collage[1])}
-              aria-label={`Open ${collage[1].title}`}
-              className="absolute -left-4 top-8 hidden w-24 -rotate-6 overflow-hidden rounded-xl border-2 border-paper shadow-xl transition-transform duration-300 hover:scale-105 sm:block"
-            >
-              <img
-                src={collage[1].image}
-                alt={collage[1].title}
-                className="h-32 w-full object-cover"
-              />
-            </button>
-
-            {videoProject && (
-              <button
-                type="button"
-                onClick={() => setActiveProject(videoProject)}
-                aria-label={`Play ${videoProject.title}`}
-                className="absolute -right-4 bottom-16 w-24 rotate-6 overflow-hidden rounded-xl border-2 border-paper shadow-xl transition-transform duration-300 hover:scale-105 sm:w-28"
-              >
-                <video
-                  src={videoProject.video}
-                  muted
-                  loop
-                  autoPlay
-                  playsInline
-                  className="h-36 w-full object-cover"
-                />
-                <span className="absolute inset-0 flex items-center justify-center bg-ink/20">
-                  <Play size={20} className="text-white" fill="white" />
-                </span>
-              </button>
-            )}
-
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl md:rounded-4xl bg-canvas">
+            <img
+              src="/assets/miltah-photo.jpeg"
+              alt="Miltah, junior digital marketer"
+              className="h-full w-full object-cover"
+            />
             <span className="absolute bottom-4 left-4 rounded-full border border-white/40 bg-paper/90 px-4 py-2 text-xs font-medium text-ink backdrop-blur-sm md:bottom-6 md:left-6">
-              Strategy · Content · Digital
+              Miltah Mazvanhi
             </span>
           </div>
         </motion.div>

@@ -19,14 +19,14 @@ export default function AboutIntro() {
               </span>
             </h2>
             <p className="mt-5 max-w-2xl leading-relaxed text-muted">
-              I’m a junior digital marketer with a curiosity for people,
+              I'm a junior digital marketer with a curiosity for people,
               stories, and what makes an idea resonate. I enjoy researching an
               audience, shaping clear content, and bringing a campaign together
               with care.
             </p>
             <p className="mt-4 max-w-2xl leading-relaxed text-muted">
-              I’m growing my skills across social media, content, and digital
-              advertising, and I’m always looking for thoughtful ways to learn,
+              I'm growing my skills across social media, content, and digital
+              advertising, and I'm always looking for thoughtful ways to learn,
               create, and help brands connect with the right people.
             </p>
             <Link
@@ -36,15 +36,15 @@ export default function AboutIntro() {
               More about me <ArrowUpRight size={16} />
             </Link>
           </div>
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-canvas sm:aspect-[16/10] md:aspect-[4/5]">
+          <div className="relative aspect-4/5 w-full overflow-hidden rounded-2xl bg-canvas sm:aspect-16/10 md:aspect-4/5">
             <img
-              src="/work/coke-audit-cover.jpg"
-              alt="Coca-Cola website performance audit cover"
+              src="/assets/miltah-photo.jpeg"
+              alt="Miltah, junior digital marketer"
               loading="lazy"
               className="h-full w-full object-cover"
             />
             <span className="absolute bottom-4 left-4 rounded-full border border-white/40 bg-paper/90 px-4 py-2 text-xs font-medium text-ink backdrop-blur-sm">
-              Coca-Cola · Website audit
+              Junior Digital Marketer
             </span>
           </div>
         </Reveal>
